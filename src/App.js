@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -62,19 +63,38 @@ function App() {
 }
 
 function Header() {
-  return <h2>Fast React Pizza Co.</h2>;
+  return (
+    <div>
+      <header>
+        <h2 className="header">Fast React Pizza Co.</h2>
+      </header>
+    </div>
+  );
 }
 
 function Menu() {
   return (
     <div>
       <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name="Focaccia"
+        ingredients="Bread with ithalian oil and rosemery"
+        price="6"
+        photoName="pizzas/focaccia.jpg"
+        soldOut="false"
+      />
+    </div>
+  );
+}
+
+function Pizza(props) {
+  return (
+    <div className="container">
+      <img src={props.photoName} alt={props.name} />
+      <div className="sideBySide">
+        <h2>{props.name}</h2>
+        <p>{props.ingredients}</p>
+      </div>
     </div>
   );
 }
@@ -87,17 +107,9 @@ function Footer() {
   console.log(isOpen);
 
   return (
-    <footer>{new Date().toLocaleTimeString()}. We're currently open.</footer>
-  );
-}
-
-function Pizza() {
-  return (
-    <div>
-      <img src="pizzas/focaccia.jpg" alt="Pizza Focaccia." />
-      <h2>Focaccia</h2>
-      <p>Bread with ithalian oil and rosemery</p>,
-    </div>
+    <footer className="footer">
+      {new Date().toLocaleTimeString()}. We're currently open.
+    </footer>
   );
 }
 
